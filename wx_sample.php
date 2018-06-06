@@ -7,7 +7,7 @@
 define("TOKEN", "wangning1995wxsample");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
-
+$wechatObj->responseMsg();
 class wechatCallbackapiTest
 {
 	public function valid()
@@ -20,7 +20,6 @@ class wechatCallbackapiTest
         	exit;
         }
     }
-
     public function responseMsg()
     {
 		//get post data, May be due to the different environments
@@ -45,7 +44,8 @@ class wechatCallbackapiTest
 				if(!empty( $keyword ))
                 {
               		$msgType = "text";
-                	$contentStr = "Welcome to wechat world!";
+                    $contentStr = "Welcome to wechat world!";
+                    $contentStr = $textTpl;
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 	echo $resultStr;
                 }else{
